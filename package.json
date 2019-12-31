@@ -1,0 +1,25 @@
+{
+  "name": "mydevcorner",
+  "version": "1.0.0",
+  "description": "Final Project - MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ECiceraro/myDevCorner.git"
+  },
+  "author": "Erik Ciceraro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ECiceraro/myDevCorner/issues"
+  },
+  "homepage": "https://github.com/ECiceraro/myDevCorner#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.8.3"
+  }
+}
