@@ -10,6 +10,7 @@ import BE_Languages from './components/BE_Languages.js'
 import BE_Frameworks from './components/BE_Frameworks.js'
 import Databases from './components/Databases.js';
 import Hosting from './components/Hosting.js';
+import Community from './components/Community.js';
 import Login from './components/Login.js';
 import Signup from './components/Signup.js';
 import Logout from './components/Logout.js';
@@ -45,6 +46,7 @@ class App extends React.Component{
                             </div>
                         </dropdown>
                         <Link to="/hosting">Hosting</Link>
+                        <Link to="/community">Community</Link>
                         <Link to="/signup">Sign Up</Link>
                         <Link to="/login">Login</Link>
                         <Link to="/logout">Log Out</Link>
@@ -76,6 +78,9 @@ class App extends React.Component{
                         </Route>
                         <Route path="/hosting">
                             <Hosting/>
+                        </Route>
+                        <Route path="/community">
+                            <Community/>
                         </Route>
                         <Route path="/signup">
                             <Signup/>
