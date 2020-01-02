@@ -11,7 +11,7 @@ class Community extends React.Component {
     }
 
     componentDidMount(){
-        const queryUrl = `http://localhost:5000/posts`;
+        const queryUrl = `http://https://cors-anywhere.herokuapp.com/https://savvyhotspotsapi.herokuapp.com/api/posts`;
         axios(queryUrl)
         .then(response => {
             console.log(response);
