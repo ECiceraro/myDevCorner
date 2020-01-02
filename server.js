@@ -6,13 +6,20 @@ const cors = require('cors');
 
 const app = express();
 
+// Allows us to use the env file to keep sensitive information secure
+require('dotenv').config();
+
+// Allows us to have our servers receive and send data from differents origins than the original server.
 app.use(cors());
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
 // DB config
-const db = require('./config/keys').mongoURI;
+const db = process.env.MONGODB_URI;
+
+// Port config
+const port = process.env.PORT;
 
 // Connect to Mongo
 mongoose
@@ -32,7 +39,5 @@ app.use('/posts', postsController)
 //         res.sendFile(path.resolve(__dirname, 'my-dev-corner', 'build', 'index.html'));
 //     })
 // }
-
-    const port = process.env.PORT || 5000;
 
     app.listen(port, () => console.log(`Server started on port ${port}`));
