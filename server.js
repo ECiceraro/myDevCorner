@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const postsController = require('./controllers/Posts.js');
+const postsController = require('./api/controllers/Posts.js');
 const cors = require('cors');
 const path = require('path');
 
@@ -39,6 +39,6 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 // Port config
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 
-    app.listen(port, () => console.log(`Server started on port ${port}`));
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
