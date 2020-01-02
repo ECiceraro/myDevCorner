@@ -18,12 +18,12 @@ app.use(bodyParser.json());
 
 // DB config
 const db = process.env.MONGODB_URI;
-
+console.log(db);
 // Connect to Mongo
 mongoose
     .connect(db, { useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false, useCreateIndex: true })
     .then(() => console.log('MongoDB Connected....'))
-    .catch(err => console.log(err));
+    .catch(err => console.log('connection not established ', err));
 
 // Controllers
 app.use('/posts', postsController)

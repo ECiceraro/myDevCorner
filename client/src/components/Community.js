@@ -11,7 +11,7 @@ class Community extends React.Component {
     }
 
     componentDidMount(){
-        const queryUrl = `https://mydevcorner.herokuapp.com/posts`;
+        const queryUrl = `http://localhost:5000/posts`;
         axios(queryUrl)
         .then(response => {
             console.log(response);
