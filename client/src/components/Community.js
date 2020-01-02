@@ -11,7 +11,7 @@ class Community extends React.Component {
     }
 
     componentDidMount(){
-        const queryUrl = `https://savvyhotspotsapi.herokuapp.com/api/posts`;
+        const queryUrl = `https://savvyhotspotsapi.herokuapp.com/api/controllers/posts`;
         axios(queryUrl)
         .then(response => {
             console.log(response);
