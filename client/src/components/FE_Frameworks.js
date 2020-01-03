@@ -1,7 +1,7 @@
 import React from 'react';
 import './FE_Frameworks.css';
 
-class FE_Frameworks extends React.Component {
+class FeFrameworks extends React.Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class FE_Frameworks extends React.Component {
     }
 }
 
-export default FE_Frameworks
+export default FeFrameworks

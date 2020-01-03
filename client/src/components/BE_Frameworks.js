@@ -1,7 +1,7 @@
 import React from 'react';
 import './BE_Frameworks.css';
 
-class BE_Frameworks extends React.Component {
+class BeFrameworks extends React.Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class BE_Frameworks extends React.Component {
     }
 }
 
-export default BE_Frameworks
+export default BeFrameworks

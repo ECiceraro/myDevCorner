@@ -1,7 +1,7 @@
 import React from 'react';
 import './FE_Languages.css';
 
-class FE_Languages extends React.Component {
+class FeLanguages extends React.Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class FE_Languages extends React.Component {
     }
 }
 
-export default FE_Languages
+export default FeLanguages
