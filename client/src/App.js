@@ -125,7 +125,6 @@ class App extends React.Component{
                         </div>
                         <p>Application Developed By Erik Ciceraro</p>
                     </footer>
-
                 </div>
             </Router>
         )
