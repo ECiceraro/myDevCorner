@@ -49,7 +49,7 @@ nav {
     height: 100%;
     width: 100%;
     background-image: url(/images/web-dev.png);
-    background-size: 68%;
+    background-size: 63%;
     background-position: left;
     background-repeat: no-repeat;
 }
@@ -154,8 +154,9 @@ footer {
 
 .hr {
     height: 1em;
+    margin: 0 auto;
     margin-top: 1em;
-    width: 100%;
+    width: 80%;
     border-top: 1px solid white;
 }
 
