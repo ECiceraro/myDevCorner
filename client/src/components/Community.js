@@ -23,12 +23,12 @@ class Community extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Community</h1>
-                <ul>
-
-                </ul>
+            <>
+            <div className="heroDiv2">
+                <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
+                <h1 className="heroTitle2">Community</h1>
             </div>
+            </>
         )
     }
 }

@@ -5,14 +5,14 @@ body {
 
 .heroDiv2 {
     background-image: linear-gradient(#002d56, #1d399d, #377bff);
-    height: 40em;
+    height: 25em;
     width: 100%;
 }
 
 .heroImg2{
-    height: 20em;
-    width: 20em;
-    margin-top: 8em;
+    height: 10em;
+    width: 10em;
+    margin-top: 5em;
 }
 
 .heroTitle2 {

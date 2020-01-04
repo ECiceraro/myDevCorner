@@ -7,7 +7,7 @@ class Frontend extends React.Component {
             <>
                 <div className="heroDiv2">
                     <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
-                    <h1 className="heroTitle2">Front-End</h1>
+                    <h1 className="heroTitle2">Front-End Development</h1>
                 </div>
                 <h3 className="subTitle1Fe">What is front-end development?</h3>
                 <div className="subDiv1Fe">

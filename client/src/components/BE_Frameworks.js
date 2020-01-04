@@ -4,9 +4,12 @@ import './BE_Frameworks.css';
 class BeFrameworks extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Back End Frameworks</h1>
+            <>
+            <div className="heroDiv2">
+                <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
+                <h1 className="heroTitle2">Back-End Frameworks</h1>
             </div>
+            </>
         )
     }
 }

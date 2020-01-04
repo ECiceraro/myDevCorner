@@ -7,7 +7,7 @@ class Backend extends React.Component {
             <>
                 <div className="heroDiv2">
                     <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying back-end development" />
-                    <h1 className="heroTitle2">Back-End</h1>
+                    <h1 className="heroTitle2">Back-End Development</h1>
                 </div>
                 <h3 className="subTitle1Fe">What is back-end development?</h3>
                 <div className="subDiv1Fe">

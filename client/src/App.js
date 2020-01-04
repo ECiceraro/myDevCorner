@@ -25,7 +25,7 @@ class App extends React.Component{
     render() {
         return (
             <Router>
-                <div className="Main1">
+                <>
                     <nav className="navbar sticky-top navbar-expand-lg nav-pills">
                         <Link className="btn btn-primary" id="homeLink" to="/">My<br/> Dev <br/> Corner</Link>
                         <div className="dropdown">
@@ -117,15 +117,11 @@ class App extends React.Component{
                         </Route>
                     </Switch>
                     <footer>
-                        <div className="footerDiv">
-                            <a className="footerLink" href="https://linkedin.com/in/erikciceraro" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                            <a className="footerLink" href="https://github.com/ECiceraro" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                        <div className="hr">
-                        </div>
-                        <p>Application Developed By Erik Ciceraro</p>
+                            <a className="footerLink" href="https://linkedin.com/in/erikciceraro" target="_blank" rel="noopener noreferrer"><img className="icon" alt="linkedin icon" src="/images/linkedin.png"/></a>
+                            <a className="footerLink" href="https://github.com/ECiceraro" target="_blank" rel="noopener noreferrer"><img className="icon" alt="github icon" src="/images/github.png"/></a>
+                        <p className="footerText" >Application Developed By Erik Ciceraro</p>
                     </footer>
-                </div>
+                </>
             </Router>
         )
     }
