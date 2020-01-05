@@ -13,9 +13,9 @@ class Html extends React.Component {
                             <td><a href="https://www.w3.org/TR/html52/" target="_blank" rel="noopener noreferrer">https://www.w3.org/TR/html52/</a></td>
                         </tr>
                         <tr>
-                        <th scope="row tableText"></th>
-                        <td>
-                        </td>
+                            <th scope="row tableText"></th>
+                            <td>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row tableText">Useful Web Resources</th>
