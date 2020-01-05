@@ -19,7 +19,7 @@ class BeLanguages extends React.Component {
                     </div>
                     <h3 id="subText4">Click a language below to see further resources</h3>
                     <nav className="nav2">
-                        <Link to="/fe_languages/php"><img className="icon3" src="/images/phpIcon.svg" /></Link>
+                        <Link to="/fe_languages/php"><img className="icon3" src="/images/phpIcon.svg" alt="php icon"/></Link>
                     </nav>
                     <Switch>
                         <Route path="/fe_languages/php">

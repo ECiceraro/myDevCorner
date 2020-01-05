@@ -9,6 +9,7 @@ class Databases extends React.Component {
                 <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
                 <h1 className="heroTitle2">Databases</h1>
             </div>
+            <h3 id="subText4">Click on a database below to see further resources</h3>
             </>
         )
     }

@@ -23,6 +23,15 @@ body {
     margin-left: 1em;
 }
 
+.onHover {
+    color: #1d399d;
+}
+
+.onHover:hover {
+    background-color: #007bff;
+    color: white;
+}
+
 .heroWrapper {
     background-image: linear-gradient(to right, #002d56, #007bff);
     height: 50em;

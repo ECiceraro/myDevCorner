@@ -29,27 +29,27 @@ class App extends React.Component{
                     <nav className="navbar sticky-top navbar-expand-lg nav-pills nav1">
                         <Link className="btn btn-primary" id="homeLink" to="/">My<br/> Dev <br/> Corner</Link>
                         <div className="dropdown">
-                        <button type="button" className="dropdown-toggle nav-item" data-toggle="dropdown">Front-End</button>
-                            <div className="dropdown-menu dropdown-menu-right">
-                                <Link to="/frontend" className="dropdown-item active">Overview</Link>
-                                <Link to="/fe_languages" className="dropdown-item active">Languages</Link>
-                                <Link to="/fe_frameworks" className="dropdown-item active">Frameworks</Link>
+                        <button type="button" className="dropdown-toggle nav-item btn btn-primary" data-toggle="dropdown" data-hover="dropdown">Front-End</button>
+                            <div className="dropdown-menu">
+                                <Link to="/frontend" className="dropdown-item onHover">Overview</Link>
+                                <Link to="/fe_languages" className="dropdown-item onHover">Languages</Link>
+                                <Link to="/fe_frameworks" className="dropdown-item onHover">Frameworks</Link>
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button type="button" className="dropdown-toggle nav-item" data-toggle="dropdown">Back-End</button>
-                            <div className="dropdown-menu dropdown-menu-right">
-                                <Link to="/backend" className="dropdown-item">Overview</Link>
-                                <Link to="/be_languages" className="dropdown-item">Languages</Link>
-                                <Link to="/be_frameworks" className="dropdown-item">Frameworks</Link>
-                                <Link to="/databases" className="dropdown-item">Databases</Link>
+                            <button type="button" className="dropdown-toggle nav-item btn btn-primary" data-toggle="dropdown">Back-End</button>
+                            <div className="dropdown-menu">
+                                <Link to="/backend" className="dropdown-item onHover">Overview</Link>
+                                <Link to="/be_languages" className="dropdown-item onHover">Languages</Link>
+                                <Link to="/be_frameworks" className="dropdown-item onHover">Frameworks</Link>
+                                <Link to="/databases" className="dropdown-item onHover">Databases</Link>
                             </div>
                         </div>
-                        <Link className="nav-item" to="/hosting">Hosting</Link>
-                        <Link className='mr-auto nav-item' to="/community">Community</Link>
-                        <Link className="nav-item2" to="/signup">Sign Up</Link>
-                        <Link className="nav-item2" to="/login">Login</Link>
-                        <Link className="nav-item2" to="/logout">Log Out</Link>
+                        <Link className="nav-item btn btn-primary" to="/hosting">Hosting</Link>
+                        <Link className='mr-auto nav-item btn btn-primary' to="/community">Community</Link>
+                        <Link className="nav-item2 btn btn-primary" to="/signup">Sign Up</Link>
+                        <Link className="nav-item2 btn btn-primary" to="/login">Login</Link>
+                        <Link className="nav-item2 btn btn-primary" to="/logout">Log Out</Link>
                     </nav>
                     <Switch>
                         <Route exact path="/">
