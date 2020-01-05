@@ -1,0 +1,41 @@
+.icon2 {
+    height: 10em;
+    width: 10em;
+    margin: 0 2em;
+    margin-top: 3em;
+}
+
+.icon3 {
+    height: 12.5em;
+    width: 12.5em;
+    margin-left: 1em;
+    margin-top: 3em;
+}
+
+#subText4 {
+    display: inline-block;
+    color: #1d399d;
+    font-size: 1.2em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+
+.languageTitle {
+    margin-top: 1em;
+    color: #1d399d;
+}
+
+.htmlTable {
+    width: 15em;
+    margin: 0 auto;
+    margin-top: 2em;
+}
+
+th {
+    color: #1d399d;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+  border-top: none;
+}
