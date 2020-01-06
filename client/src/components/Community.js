@@ -11,6 +11,8 @@ class Community extends React.Component {
     }
 
     componentDidMount(){
+        // auto scroll to top
+        window.scrollTo(0, 0);
         const queryUrl = `https://mydevcorner.herokuapp.com/posts`;
         axios(queryUrl)
         .then(response => {

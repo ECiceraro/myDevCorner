@@ -21,6 +21,15 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
     render() {
         return (
             <Router>

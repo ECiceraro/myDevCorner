@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.css';
+import { Redirect } from "react-router-dom"
 import axios from 'axios';
 const baseUrl = `https://mydevcorner.herokuapp.com`;
 
@@ -8,8 +9,13 @@ class Signup extends React.Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            toHome: false
         }
+    }
+    componentDidMount() {
+        // auto scroll to top
+        window.scrollTo(0, 0)
     }
     // ==============
     // HANDLERS
@@ -40,9 +46,15 @@ class Signup extends React.Component {
     handleSubmit = (e) => {
       e.preventDefault();
       this.handleCreate(this.state);
-    }
+      this.setState({
+          toHome: true
+      });
 
+    }
     render() {
+        if(this.state.toHome === true){
+            return <Redirect to='/' />
+        }
         return (
             <>
                 <div className="heroDiv2">

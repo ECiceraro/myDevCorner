@@ -2,6 +2,16 @@ import React from 'react';
 import './Frontend.css';
 
 class Frontend extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+    componentDidMount() {
+        // auto scroll to top
+        window.scrollTo(0, 0)
+    }
     render() {
         return (
             <>
