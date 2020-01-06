@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Drinks = require('../models/drinks.js')
 
 const userSchema = new mongoose.Schema({
     username: {type: String, unique: true},
@@ -7,5 +6,6 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('User', userSchema)
+
 
 module.exports = User
