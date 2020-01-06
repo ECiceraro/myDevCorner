@@ -1,7 +1,7 @@
 import React from 'react';
 import './Signup.css';
 import axios from 'axios';
-const baseUrl = `https://localhost:5000`;
+const baseUrl = `https://mydevcorner.herokuapp.com/`;
 
 class Signup extends React.Component {
     constructor(props) {
