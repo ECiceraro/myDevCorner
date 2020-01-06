@@ -20,6 +20,13 @@ app.use(cors());
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
+// Allows us to use the sessions body
+app.use(session({
+    secret:'feedmeseymour',
+    resave:false,
+    saveUninitialized:false
+}))
+
 // DB config
 const db = process.env.MONGODB_URI;
 console.log(db);
@@ -42,6 +49,10 @@ if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+
+    app.post('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
