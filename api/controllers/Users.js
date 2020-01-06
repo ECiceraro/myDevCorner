@@ -9,7 +9,9 @@ router.post('/', (req, res) => {
     User.create(req.body, (error, createdUser) => {
         req.session.user = createdUser
         res.json(createdUser)
-    })
+    }).catch(err => {
+        console.log(err)
+    }
 })
 
 // Read/Index Route
