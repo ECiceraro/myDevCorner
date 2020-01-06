@@ -1,5 +1,4 @@
 import React from 'react';
-import './Backend.css';
 
 class Backend extends React.Component {
     constructor(props) {

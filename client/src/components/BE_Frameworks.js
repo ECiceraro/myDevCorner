@@ -1,5 +1,4 @@
 import React from 'react';
-import './BE_Frameworks.css';
 import Nodejs from '../components/Nodejs.js';
 import Express from '../components/Express.js';
 import {

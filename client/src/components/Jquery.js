@@ -1,5 +1,5 @@
 import React from 'react';
-import './Jquery.css'
+
 
 class Jquery extends React.Component {
     render() {

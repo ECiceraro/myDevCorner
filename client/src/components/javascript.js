@@ -1,5 +1,4 @@
 import React from 'react';
-import './javascript.css';
 
 class JavaScript extends React.Component {
     render() {

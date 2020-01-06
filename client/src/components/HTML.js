@@ -1,5 +1,4 @@
 import React from 'react';
-import './HTML.css';
 
 class Html extends React.Component {
     render() {

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Mongodb.css';
 
 class Mongodb extends React.Component {
     render() {

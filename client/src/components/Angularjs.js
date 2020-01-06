@@ -1,5 +1,4 @@
 import React from 'react';
-import './Angularjs.css'
 
 class Angularjs extends React.Component {
     render() {

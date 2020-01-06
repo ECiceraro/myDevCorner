@@ -1,5 +1,4 @@
 import React from 'react';
-import './Postgresql.css';
 
 class Postgresql extends React.Component {
     render() {

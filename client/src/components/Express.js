@@ -1,5 +1,4 @@
 import React from 'react';
-import './Express.css';
 
 class Express extends React.Component {
     render() {

@@ -2,7 +2,13 @@ import React from 'react';
 import './Signup.css';
 import { Redirect } from "react-router-dom"
 import axios from 'axios';
-const baseUrl = `https://mydevcorner.herokuapp.com`;
+let baseUrl = '';
+
+if (process.env.NODE_ENV === 'developement') {
+    let baseUrl = `https://localhost:5000`;
+} else if (process.env.NODE_ENV === 'production') {
+    let baseUrl = 'https://mydevcorner.herokuapp.com';
+}
 
 class Signup extends React.Component {
     constructor(props) {

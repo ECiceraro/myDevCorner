@@ -1,5 +1,4 @@
 import React from 'react';
-import './Heroku.css';
 
 class Heroku extends React.Component {
     render() {

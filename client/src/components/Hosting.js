@@ -1,5 +1,4 @@
 import React from 'react';
-import './Hosting.css';
 import Heroku from '../components/Heroku.js';
 import {
   BrowserRouter as Router,

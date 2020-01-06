@@ -7,11 +7,10 @@ const User = require('../models/User.js')
 router.post('/', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
     User.create(req.body, (error, createdUser) => {
-        console.log(createdUser);
         req.session.user = createdUser
-        res.json(createdUser)
+        console.log(req.session.user);
+        res.json(req.session.user)
     })
-    console.log(req.session.user);
 })
 
 // Read/Index Route

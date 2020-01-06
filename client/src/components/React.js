@@ -1,5 +1,4 @@
 import React from 'react';
-import './React.css'
 
 class Reactjs extends React.Component {
     render() {

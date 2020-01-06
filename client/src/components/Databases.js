@@ -1,5 +1,4 @@
 import React from 'react';
-import './Databases.css';
 import Mongodb from '../components/Mongodb.js';
 import Postgresql from '../components/Postgresql.js';
 import {

@@ -1,5 +1,4 @@
 import React from 'react';
-import './php.css';
 
 class Php extends React.Component {
     render() {

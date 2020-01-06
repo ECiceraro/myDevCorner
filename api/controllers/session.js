@@ -4,7 +4,7 @@ const router = express.Router()
 const User = require('../models/User.js')
 
 router.post('/', (req, res) => {
-    User.findOne({username:req.body.username}, (error,foundUser) =>{
+    User.findOne(req.body.username, (error,foundUser) =>{
         if(foundUser === null){
             res.json({
                 message: 'User not found'

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Home.css';
 
 class Home extends React.Component {
     constructor(props) {
@@ -9,7 +8,7 @@ class Home extends React.Component {
         }
     }
     componentDidMount() {
-        // auto scroll to top 
+        // auto scroll to top
         window.scrollTo(0, 0)
     }
     render() {
