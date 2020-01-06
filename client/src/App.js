@@ -13,7 +13,6 @@ import Hosting from './components/Hosting.js';
 import Community from './components/Community.js';
 import Login from './components/Login.js';
 import Signup from './components/Signup.js';
-import Logout from './components/Logout.js';
 import {
   BrowserRouter as Router,
   Switch,
