@@ -1,7 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session  = require('express-session')
 const bodyParser = require('body-parser');
 const postsController = require('./api/controllers/Posts.js');
+const usersController = require('./api/controllers/Users.js');
+const sessionController = require('./api/controllers/session.js')
 const cors = require('cors');
 const path = require('path');
 
@@ -27,6 +30,10 @@ mongoose
 
 // Controllers
 app.use('/posts', postsController)
+
+app.use('/users', usersController)
+
+app.use('/session', sessionController)
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

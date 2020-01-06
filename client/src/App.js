@@ -49,7 +49,7 @@ class App extends React.Component{
                         <Link className='mr-auto nav-item btn btn-primary' to="/community">Community</Link>
                         <Link className="nav-item2 btn btn-primary" to="/signup">Sign Up</Link>
                         <Link className="nav-item2 btn btn-primary" to="/login">Login</Link>
-                        <Link className="nav-item2 btn btn-primary" to="/logout">Log Out</Link>
+                        <Link className="nav-item2 btn btn-primary" to="/logout">Logout</Link>
                     </nav>
                     <Switch>
                         <Route exact path="/">
@@ -89,7 +89,7 @@ class App extends React.Component{
                             <Login/>
                         </Route>
                         <Route path="/logout">
-                            <Logout/>
+                            <Home/>
                         </Route>
                     </Switch>
                     <footer>
