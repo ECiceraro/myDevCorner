@@ -1,12 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session  = require('express-session');
-import axios from 'axios';
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const postsController = require('./api/controllers/Posts.js');
 const usersController = require('./api/controllers/Users.js');
-const sessionController = require('./api/controllers/session.js')
+const sessionController = require('./api/controllers/session.js');
 const cors = require('cors');
 const path = require('path');
 

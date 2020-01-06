@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
         res.json(createdUser)
     }).catch(err => {
         console.log(err)
-    }
+    })
 })
 
 // Read/Index Route
