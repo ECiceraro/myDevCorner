@@ -20,16 +20,19 @@ class Signup extends React.Component {
     }
     // handles creating user
     handleCreate = (createData) => {
-        axios(`${baseUrl}/users`, {
-            body: JSON.stringify(createData),
+        axios({
             method: 'POST',
+            url: `${baseUrl}/users`,
+            data: createData,
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             }
         })
         .then(createdUser => {
-            return createdUser.json()
+            return createdUser
+        }).catch(err => {
+            console.log(err)
         })
     }
 
