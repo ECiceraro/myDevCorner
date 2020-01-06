@@ -30,8 +30,6 @@ class Signup extends React.Component {
         })
         .then(createdUser => {
             return createdUser.json()
-        }).catch(err => {
-            console.log(err)
         })
     }
 

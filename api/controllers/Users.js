@@ -5,12 +5,13 @@ const User = require('../models/User.js')
 
 // Create/Post Route
 router.post('/', (req, res) => {
+    console.log(req.body);
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+    console.log(req.body);
+    console.log(req.password);
     User.create(req.body, (error, createdUser) => {
         req.session.user = createdUser
         res.json(createdUser)
-    }).catch(err => {
-        console.log(err)
     })
 })
 
