@@ -1,0 +1,24 @@
+.postDiv {
+    margin: 0 auto;
+    margin-top: 5em;
+    width: 22em;
+    max-height: 10em;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.commentDiv {
+    margin: 0 auto;
+    margin-top: .5em;
+    width: 15em;
+    height: 6em;
+    border: 1px solid red;
+}
+
+.postTextDiv {
+
+}
+
+.commentTextDiv {
+
+}

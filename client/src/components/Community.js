@@ -28,7 +28,17 @@ class Community extends React.Component {
             <>
             <div className="heroDiv2">
                 <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
-                <h1 className="heroTitle2">Community</h1>
+                <h1 className="heroTitle2">Development Forum</h1>
+            </div>
+            <h3 id="subText4">Login and click on comment button below to see and leave comments for each post</h3>
+            <div className="postDiv">
+                <div className="postTextDiv">
+
+                </div>
+            </div>
+            <div className="commentDiv">
+                <div className="commentTextDiv">
+                </div>
             </div>
             </>
         )

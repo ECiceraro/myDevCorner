@@ -13,6 +13,7 @@ import Hosting from './components/Hosting.js';
 import Community from './components/Community.js';
 import Login from './components/Login.js';
 import Signup from './components/Signup.js';
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,15 +21,100 @@ import {
   Link
 } from "react-router-dom";
 
+let baseUrl = '';
+
+if (process.env.NODE_ENV === 'developement') {
+    let baseUrl = `https://localhost:5000`;
+} else if (process.env.NODE_ENV === 'production') {
+    let baseUrl = 'https://mydevcorner.herokuapp.com';
+}
+
 class App extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-
-        }
+            isLoggedIn: false,
+            sessionUser: {},
+            messageA: '',
+            messageB: '',
+            destroyed: ''
+        };
+    this.handleCreate = this.handleCreate.bind(this);
+    this.checkSession = this.checkSession.bind(this);
+    this.killSession = this.killSession.bind(this);
+    this.handleSession = this.handleSession.bind(this);
     }
-    componentDidMount() {
+    // check if session is in progress function
+    checkSession = () => {
+        axios({
+            method: 'GET',
+            url: `${baseUrl}/session`,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then( foundUser => {
+            if(foundUser.data.username){
+                this.setState({
+                    sessionUser: foundUser.data
+                })
+            }
+        })
+    }
+    // destroy session function
+    killSession = (event) => {
+        axios({
+            method: 'DELETE',
+            url: `${baseUrl}/session`
+        }).then( response => {
+            console.log(response.data);
+        })
+    }
+    // handles creating session from login page
+    handleSession = (loginData) => {
+        axios({
+            method: 'POST',
+            url: `${baseUrl}/session`,
+            data: loginData,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then( loggedInUser => {
+            this.setState({
+                sessionUser: loggedInUser.data,
+                messageA: loggedInUser.data.messageA,
+                messageB: loggedInUser.data.messageB
+            })
+            // console.log(this.state);
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+    // handles creating user
+    handleCreate = (createData) => {
+        axios({
+            method: 'POST',
+            url: `${baseUrl}/users`,
+            data: createData,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then( createdUser => {
+            this.setState({
+                sessionUser: createdUser.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+    componentDidMount = () => {
         window.scrollTo(0, 0)
+        this.checkSession()
+
     }
     render() {
         return (
@@ -54,10 +140,20 @@ class App extends React.Component{
                             </div>
                         </div>
                         <Link className="nav-item btn btn-primary" to="/hosting">Hosting</Link>
-                        <Link className='mr-auto nav-item btn btn-primary' to="/community">Community</Link>
+                        <Link className='mr-auto nav-item btn btn-primary' to="/community">Forum</Link>
+                        {this.state.sessionUser.username ? (
+                            <h3>Welcome, {this.state.sessionUser.username}!</h3>
+                        ) : (<></>)
+                        }
                         <Link className="nav-item2 btn btn-primary" to="/signup">Sign Up</Link>
-                        <Link className="nav-item2 btn btn-primary" to="/login">Login</Link>
-                        <Link className="nav-item2 btn btn-primary" to="/logout">Logout</Link>
+                        {!this.state.sessionUser.username
+                        ? <Link className="nav-item2 btn btn-primary" to="/login">Login</Link>
+                        : (<></>)}
+                        <form onSubmit={() => this.killSession()}>
+                            {this.state.sessionUser.username ? (
+                                <button type="submit" className="nav-item2 btn btn-primary">Logout</button>
+                            ) : (<></>)}
+                            </form>
                     </nav>
                     <Switch>
                         <Route exact path="/">
@@ -91,13 +187,13 @@ class App extends React.Component{
                             <Community/>
                         </Route>
                         <Route path="/signup">
-                            <Signup/>
+                            <Signup handleCreate={this.handleCreate}/>
                         </Route>
                         <Route path="/login">
-                            <Login/>
-                        </Route>
-                        <Route path="/logout">
-                            <Home/>
+                            <Login
+                            messageA={this.state.messageA}
+                            messageB={this.state.messageB}
+                            handleSession={this.handleSession}/>
                         </Route>
                     </Switch>
                     <footer>
