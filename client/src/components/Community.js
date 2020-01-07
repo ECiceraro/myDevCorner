@@ -23,6 +23,24 @@ class Community extends React.Component {
         })
     }
 
+    // ==============
+    // HANDLERS
+    // ==============
+    // handles form change
+    handleChange = (e) => {
+      this.setState({[e.target.id] : e.target.value})
+    }
+    // handles submit
+    handleSubmit = async(e) => {
+      e.preventDefault();
+      await(this.createPost(this.state));
+      if(this.props.messageA || this.props.messageB){
+          this.setState({
+              toHome: true
+          });
+      }
+    }
+
     render() {
         return (
             <>

@@ -9,9 +9,11 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            toHome: false
+            toHome: false,
+            testRefresh: false
         }
     }
+
     componentDidMount() {
         // auto scroll to top
         window.scrollTo(0, 0)
@@ -23,20 +25,27 @@ class Login extends React.Component {
     handleChange = (e) => {
       this.setState({[e.target.id] : e.target.value})
     }
+    updateState = () => {
+        this.forceUpdate()
+    }
     // handles submit
-    handleSubmit = async(e) => {
+    handleSubmit = (e) => {
       e.preventDefault();
-      await(this.props.handleSession(this.state));
-      if(this.props.messageA || this.props.messageB){
-          this.setState({
-              toHome: true
-          });
-      }
-
-
+      (this.props.handleSession(this.state));
+      // need to force update state here before it hits the checks to change state and redirect to home.
+      this.updateState();
+      // console.log(this.props.messageA);
+      // console.log(this.props.messageB);
+      // if(this.props.messageA === 'User not found'){
+      //     console.log('hello');;
+      // }
+      // } else if(this.props.messageB && !this.props.messageB){
+      //     this.setState({
+      //         toHome: true
+      //     });
     }
     render() {
-        if(this.state.toHome === true){
+        if(this.props.messageA === null && this.props.messageB === null && this.props.sessionUser.username){
             return <Redirect to='/' />
         }
         return (
@@ -49,12 +58,12 @@ class Login extends React.Component {
                     <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" value={this.state.username} onChange={this.handleChange}/>
-                    <small id="usernameHelp" className="form-text text-muted">{this.props.messageA}</small>
+                    <small id="usernameHelp" className="helpText">{this.props.messageA}</small>
                     </div>
                     <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleChange} value={this.state.password}/>
-                    <small id="passwordHelp" className="form-text text-muted">{this.props.messageB}</small>
+                    <small id="passwordHelp" className="helpText">{this.props.messageB}</small>
                     </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>

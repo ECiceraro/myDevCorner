@@ -5,11 +5,20 @@ const User = require('../models/User.js')
 
 // Create/Post Route
 router.post('/', (req, res) => {
-    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-    User.create(req.body, (error, createdUser) => {
-        req.session.user = createdUser
-        res.send(req.session.user)
+    User.findOne({username:req.body.username}, (error, checkedUser) => {
+        if(req.body.username === checkedUser.username){
+            res.json({
+                messageC: 'Username taken, please enter different username'
+            })
+        } else{
+            req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+            User.create(req.body, (error, createdUser) => {
+                req.session.user = createdUser
+                res.send(req.session.user)
+            })
+        }
     })
+
 })
 
 // Read/Index Route

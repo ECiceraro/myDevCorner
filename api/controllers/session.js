@@ -5,20 +5,27 @@ const session  = require('express-session');
 const User = require('../models/User.js')
 
 router.post('/', (req, res) => {
-    console.log(req.body);
     User.findOne({username: req.body.username},  (error, foundUser) => {
         if(foundUser === null){
             res.json({
-                messageA: 'User not found'
+                sessionUser: '',
+                messageA: 'User not found',
+                messageB: null
             })
         } else {
             const doesPasswordMatch = bcrypt.compareSync(req.body.password, foundUser.password)
             if(doesPasswordMatch){
                 req.session.user = foundUser
-                res.json(req.session.user)
+                res.json({
+                    sessionUser: req.session.user,
+                    messageA: null,
+                    messageB: null
+                })
             } else {
                 res.json({
-                    messageB:'Incorrect password'
+                    sessionUser: '',
+                    messageB:'Incorrect password',
+                    messageA: null
                 })
             }
         }

@@ -35,8 +35,9 @@ class App extends React.Component{
         this.state = {
             isLoggedIn: false,
             sessionUser: {},
-            messageA: '',
-            messageB: '',
+            messageA: null,
+            messageB: null,
+            messageC: null,
             destroyed: ''
         };
     this.handleCreate = this.handleCreate.bind(this);
@@ -82,8 +83,9 @@ class App extends React.Component{
             }
         })
         .then( loggedInUser => {
+            console.log(loggedInUser);
             this.setState({
-                sessionUser: loggedInUser.data,
+                sessionUser: loggedInUser.data.sessionUser,
                 messageA: loggedInUser.data.messageA,
                 messageB: loggedInUser.data.messageB
             })
@@ -105,7 +107,8 @@ class App extends React.Component{
         })
         .then( createdUser => {
             this.setState({
-                sessionUser: createdUser.data
+                sessionUser: createdUser.data,
+                messageC: createdUser.data.messageC
             })
         }).catch(err => {
             console.log(err)
@@ -142,7 +145,7 @@ class App extends React.Component{
                         <Link className="nav-item btn btn-primary" to="/hosting">Hosting</Link>
                         <Link className='mr-auto nav-item btn btn-primary' to="/community">Forum</Link>
                         {this.state.sessionUser.username ? (
-                            <h3>Welcome, {this.state.sessionUser.username}!</h3>
+                            <h3 className="welcomeText">Welcome, {this.state.sessionUser.username}!</h3>
                         ) : (<></>)
                         }
                         <Link className="nav-item2 btn btn-primary" to="/signup">Sign Up</Link>
@@ -187,12 +190,16 @@ class App extends React.Component{
                             <Community/>
                         </Route>
                         <Route path="/signup">
-                            <Signup handleCreate={this.handleCreate}/>
+                            <Signup
+                            messageC={this.state.messageC}
+                            sessionUser={this.state.sessionUser}
+                            handleCreate={this.handleCreate}/>
                         </Route>
                         <Route path="/login">
                             <Login
                             messageA={this.state.messageA}
                             messageB={this.state.messageB}
+                            sessionUser={this.state.sessionUser}
                             handleSession={this.handleSession}/>
                         </Route>
                     </Switch>

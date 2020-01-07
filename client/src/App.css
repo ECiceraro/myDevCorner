@@ -23,6 +23,10 @@ body {
     margin-left: 1em;
 }
 
+.welcomeText {
+    color: white;
+}
+
 .onHover {
     color: #1d399d;
 }

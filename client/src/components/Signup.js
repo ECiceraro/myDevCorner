@@ -8,7 +8,8 @@ class Signup extends React.Component {
         this.state = {
             username: '',
             password: '',
-            toHome: false
+            toHome: false,
+            messageC: ''
         }
     }
     componentDidMount() {
@@ -29,10 +30,11 @@ class Signup extends React.Component {
     handleSubmit = (e) => {
       e.preventDefault();
       this.props.handleCreate(this.state);
-      this.setState({
-          toHome: true
-      });
-
+      if(this.props.messageC){
+          this.setState({
+              toHome: true
+          });
+      }
     }
     render() {
         if(this.state.toHome === true){
@@ -48,11 +50,11 @@ class Signup extends React.Component {
                     <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" value={this.state.username} onChange={this.handleChange}/>
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <small id="usernameHelp" className="helpText">{this.props.messageC}</small>
                     </div>
                     <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleChange} value={this.state.password}/>
+                    <input type="password" className="form-control" id="password" placeholder="Enter Password" onChange={this.handleChange} value={this.state.password}/>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
