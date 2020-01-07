@@ -25,24 +25,10 @@ class Login extends React.Component {
     handleChange = (e) => {
       this.setState({[e.target.id] : e.target.value})
     }
-    updateState = () => {
-        this.forceUpdate()
-    }
     // handles submit
     handleSubmit = (e) => {
       e.preventDefault();
       (this.props.handleSession(this.state));
-      // need to force update state here before it hits the checks to change state and redirect to home.
-      this.updateState();
-      // console.log(this.props.messageA);
-      // console.log(this.props.messageB);
-      // if(this.props.messageA === 'User not found'){
-      //     console.log('hello');;
-      // }
-      // } else if(this.props.messageB && !this.props.messageB){
-      //     this.setState({
-      //         toHome: true
-      //     });
     }
     render() {
         if(this.props.messageA === null && this.props.messageB === null && this.props.sessionUser.username){

@@ -83,7 +83,6 @@ class App extends React.Component{
             }
         })
         .then( loggedInUser => {
-            console.log(loggedInUser);
             this.setState({
                 sessionUser: loggedInUser.data.sessionUser,
                 messageA: loggedInUser.data.messageA,

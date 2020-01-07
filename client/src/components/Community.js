@@ -2,10 +2,19 @@ import React from 'react';
 import './Community.css';
 import axios from 'axios';
 
+let baseUrl = '';
+
+if (process.env.NODE_ENV === 'developement') {
+    let baseUrl = `https://localhost:5000`;
+} else if (process.env.NODE_ENV === 'production') {
+    let baseUrl = 'https://mydevcorner.herokuapp.com';
+}
+
 class Community extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            post: '',
             posts: []
         }
     }
@@ -23,6 +32,24 @@ class Community extends React.Component {
         })
     }
 
+    createPost = (createdPost) => {
+        axios({
+            method: 'POST',
+            url: `${baseUrl}/posts`,
+            data: createdPost,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then( foundUser => {
+            if(foundUser.data.username){
+                this.setState({
+                    sessionUser: foundUser.data
+                })
+            }
+        })
+    }
+
     // ==============
     // HANDLERS
     // ==============
@@ -34,12 +61,8 @@ class Community extends React.Component {
     handleSubmit = async(e) => {
       e.preventDefault();
       await(this.createPost(this.state));
-      if(this.props.messageA || this.props.messageB){
-          this.setState({
-              toHome: true
-          });
       }
-    }
+
 
     render() {
         return (
@@ -48,6 +71,15 @@ class Community extends React.Component {
                 <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
                 <h1 className="heroTitle2">Development Forum</h1>
             </div>
+            <h3 id="subText4">Login and leave a post to be reviewed by other devs!</h3>
+            <form onSubmit={this.createPost} className="postForm">
+                <div className="form-group">
+                <label htmlFor="post"></label>
+                <input type="textarea" className="form-control" id="post" placeholder="Post in here" onChange={this.handleChange} value={this.state.post}/>
+                <small id="passwordHelp" className="helpText">{this.props.messageB}</small>
+                </div>
+                <button type="submit" className="btn btn-primary">Post</button>
+            </form>
             <h3 id="subText4">Login and click on comment button below to see and leave comments for each post</h3>
             <div className="postDiv">
                 <div className="postTextDiv">
