@@ -13,13 +13,7 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-// // Index of saved drinks route
-// router.get('/', (req, res) => {
-//     User.findById(req.session.user._id, (error, foundUser) => {
-//         res.json(foundUser)
-//     })
-// })
-//
+
 // // Edit Route for notes into users saved drinks array
 // router.put('/:id', (req, res) => {
 //     User.findByIdAndUpdate(req.session.user._id, {$pull: {savedDrinks: {_id: req.params.id}}}, {new:true}, (error, foundUser) => {
@@ -31,11 +25,11 @@ router.patch('/:id', (req, res) => {
 //
 //
 // // Delete Route for users saved drinks
-// router.delete('/:id', (req,res) => {
-//     User.findByIdAndUpdate(req.session.user._id, {$pull: {savedDrinks: {_id: req.params.id}}}, {new:true}, (error, foundUser) => {
-//         res.json(foundUser)
-//     });
-// })
+router.delete('/:id', (req,res) => {
+    Post.findByIdAndUpdate(req.params.id, {$pull: {comments: {_id: req.params.id}}}, {new:true}, (error, foundUser) => {
+        res.json(foundUser)
+    });
+})
 
 
 module.exports = router;

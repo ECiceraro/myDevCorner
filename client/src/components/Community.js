@@ -176,7 +176,7 @@ class Community extends React.Component {
                     </div>
                     <h6 className="postSubText">Post By: {post.sessionUser.username}</h6>
                     <h6 className="postSubText mr-auto">Posted {moment(post.date).fromNow()}</h6>
-                    {this.state.sessionUser.username === post.sessionUser.username
+                    {this.state.sessionUser.username
                         ? (<button className="postSubText btn btn-primary"
                         onClick={() => {this.setPostId(post._id)}}
                         >Comment</button>)
