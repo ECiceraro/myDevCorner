@@ -10,6 +10,7 @@
     border-radius: 10px;
     background-color: #007bff;
     color: white;
+    overflow-y: scroll;
 }
 
 .commentDiv {
@@ -49,17 +50,22 @@
 }
 
 .postForm {
-    width: 40em;
-    height: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 45em;
+    height: 14.5em;
     margin: 2em auto;
     background-color: #1d399d;
     border-radius: 10px;
 }
 
 .textAreaPost {
-    width: 38em;
+    width: 42em;
     box-shadow: 0px 8px 16px rgba(82,97,115,0.16);
     margin: 0 auto;
+    /* margin-bottom: .5em; */
     resize: none;
     overflow-y: scroll;
 }
@@ -85,4 +91,20 @@
     height: 9em;
     width: 37em;
     padding: 1.5em;
+}
+
+#subText5 {
+    padding-top: 5em;
+    color: #1d399d;
+    font-size: 1.2em;
+    margin-top: 3em;
+    margin-bottom: 0;
+    background-color: rgba(0, 123, 255, .1);
+}
+
+.forumBackground {
+    margin: 0;
+    background-color: rgba(0, 123, 255, .1);
+    padding-top: 2em;
+    padding-bottom: 8em;
 }

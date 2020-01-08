@@ -39,6 +39,7 @@ class Login extends React.Component {
                     <img className="heroImg2" src="/images/frontendHero.png" alt="Login icon" />
                     <h1 className="heroTitle2">Login</h1>
                 </div>
+                <div className="iconDiv2">
                 <form onSubmit={this.handleSubmit} className="signupForm">
                     <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -52,6 +53,7 @@ class Login extends React.Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
+                </div>
             </>
         )
     }

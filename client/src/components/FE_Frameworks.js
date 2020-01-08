@@ -32,7 +32,7 @@ class FeFrameworks extends React.Component {
                         <h1 className="heroTitle2">Front-End Frameworks</h1>
                     </div>
                     <h3 id="subText4">Click on a framework below to see further resources</h3>
-                    <nav>
+                    <nav className="iconDiv">
                         <Link to="/fe_frameworks/nodejs"><img className="icon4" src="/images/nodejs.svg" alt="nodejs icon"/></Link>
                         <Link to="/fe_frameworks/jquery"><img className="icon4" src="/images/jqueryIcon.svg" alt="jquery icon"/></Link>
                         <Link to="/fe_frameworks/angularjs"><img className="icon4" src="/images/angularIcon.svg" alt="angularjs icon"/></Link>

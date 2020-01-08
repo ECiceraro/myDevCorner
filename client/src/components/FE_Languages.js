@@ -30,7 +30,7 @@ class FeLanguages extends React.Component {
                         <h1 className="heroTitle2">Front-End Languages</h1>
                     </div>
                     <h3 id="subText4">Click on a language below to see further resources</h3>
-                    <nav>
+                    <nav className="iconDiv">
                         <Link to="/fe_languages/html"><img className="icon2" src="/images/htmlIcon.svg" alt="html icon"/></Link>
                         <Link to="/fe_languages/css"><img className="icon2" src="/images/cssIcon.svg" alt="css icon"/></Link>
                         <Link to="/fe_languages/javascript"><img className="icon3" src="/images/jsIcon.svg" alt="JavaScript icon"/></Link>

@@ -85,6 +85,7 @@ body {
     justify-content: center;
     align-items: left;
     margin: 0;
+    padding-bottom: 5em;
 }
 
 .subtextBox1, .subtextBox2, .subtextBox3 {
@@ -123,7 +124,7 @@ footer {
     height: 8em;
     width: 100%;
     background-color: #002d56;
-    margin-top: 7em;
+    /* margin-top: 7em; */
     padding-top: 2em;
 }
 

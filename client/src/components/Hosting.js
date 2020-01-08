@@ -27,7 +27,7 @@ class Hosting extends React.Component {
                         <h1 className="heroTitle2">Hosting Your Apps</h1>
                     </div>
                     <h3 id="subText4">Click on a hosting platform below to see further resources</h3>
-                    <nav>
+                    <nav className="iconDiv">
                         <Link to="/hosting/heroku"><img className="icon4" src="/images/Heroku.svg" alt="Heroku icon"/></Link>
                     </nav>
                     <Switch>

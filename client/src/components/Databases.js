@@ -28,7 +28,7 @@ class Databases extends React.Component {
                         <h1 className="heroTitle2">Databases</h1>
                     </div>
                     <h3 id="subText4">Click on a database below to see further resources</h3>
-                    <nav>
+                    <nav className="iconDiv">
                         <Link to="/databases/postgresql"><img className="icon4" src="/images/Postgresql-Icon.svg" alt="postgresql icon"/></Link>
                         <Link to="/databases/mongodb"><img className="icon4" src="/images/mongodbIcon.svg" alt="mongodb icon"/></Link>
                     </nav>

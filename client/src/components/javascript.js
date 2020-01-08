@@ -4,6 +4,7 @@ class JavaScript extends React.Component {
     render() {
         return (
             <>
+                <div className="iconSubDiv">
                 <h3 className="languageTitle">JavaScript Resources</h3>
                 <table className="table htmlTable table-responsive-lg">
                     <tbody>
@@ -17,6 +18,7 @@ class JavaScript extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </>
         )
     }

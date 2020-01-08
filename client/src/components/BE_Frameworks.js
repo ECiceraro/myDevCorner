@@ -28,7 +28,7 @@ class BeFrameworks extends React.Component {
                         <h1 className="heroTitle2">Back-End Frameworks</h1>
                     </div>
                     <h3 id="subText4">Click on a framework below to see further resources</h3>
-                    <nav>
+                    <nav className="iconDiv">
                         <Link to="/be_frameworks/nodejs"><img className="icon4" src="/images/nodejs.svg" alt="nodejs icon"/></Link>
                         <Link to="/be_frameworks/express"><img className="icon4" src="/images/icon-express.svg" alt="express icon"/></Link>
                     </nav>

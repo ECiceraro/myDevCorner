@@ -5,6 +5,7 @@ class Jquery extends React.Component {
     render() {
         return (
             <>
+                <div className="iconSubDiv">
                 <h3 className="languageTitle">Jquery Resources</h3>
                 <table className="table htmlTable table-responsive-lg">
                     <tbody>
@@ -32,6 +33,7 @@ class Jquery extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </>
         )
     }

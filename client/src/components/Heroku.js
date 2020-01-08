@@ -4,6 +4,7 @@ class Heroku extends React.Component {
     render() {
         return (
             <>
+                <div className="iconSubDiv">
                 <h3 className="languageTitle">Heroku Resources</h3>
                 <table className="table htmlTable table-responsive-lg">
                     <tbody>
@@ -13,6 +14,7 @@ class Heroku extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </>
         )
     }

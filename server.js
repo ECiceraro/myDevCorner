@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const postsController = require('./api/controllers/Posts.js');
 const usersController = require('./api/controllers/Users.js');
 const sessionController = require('./api/controllers/session.js');
+const commentsController = require('./api/controllers/Comments.js');
 const cors = require('cors');
 const path = require('path');
 
@@ -42,6 +43,8 @@ app.use('/posts', postsController)
 app.use('/users', usersController)
 
 app.use('/session', sessionController)
+
+app.use('/comments', commentsController)
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

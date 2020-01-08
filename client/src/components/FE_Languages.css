@@ -20,6 +20,14 @@
     margin-bottom: 1em;
 }
 
+.iconDiv {
+    padding-bottom: 6.7em;
+}
+
+.iconDiv2 {
+    padding-bottom: 8em;
+}
+
 .languageTitle {
     margin-top: 1em;
     color: #1d399d;
@@ -38,4 +46,10 @@ th {
 .table>tbody>tr>td,
 .table>tbody>tr>th {
   border-top: none;
+}
+
+.iconSubDiv {
+    padding-top: 2em;
+    padding-bottom: 5em;
+    background-color: rgba(0, 123, 255, .06);
 }

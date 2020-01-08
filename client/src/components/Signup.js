@@ -46,6 +46,7 @@ class Signup extends React.Component {
                     <img className="heroImg2" src="/images/frontendHero.png" alt="Create Account icon" />
                     <h1 className="heroTitle2">Create Account</h1>
                 </div>
+                <div className="iconDiv2">
                 <form onSubmit={this.handleSubmit} className="signupForm">
                     <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -58,6 +59,7 @@ class Signup extends React.Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                </div>
             </>
         )
     }

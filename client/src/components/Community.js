@@ -83,7 +83,6 @@ class Community extends React.Component {
     }
     // delete post
     deletePost = (postId) => {
-        console.log(postId);
         axios({
             method: 'DELETE',
             url: `${baseUrl}/posts/${postId}`,
@@ -93,7 +92,6 @@ class Community extends React.Component {
             }
         })
         .then( deletedPost => {
-            console.log(deletedPost);
             this.loadPosts();
         }).catch(error => {
             console.log(error)
@@ -127,23 +125,25 @@ class Community extends React.Component {
                 <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
                 <h1 className="heroTitle2">Development Forum</h1>
             </div>
-            <h3 id="subText4">Login and leave a post to be reviewed by other devs!</h3>
+            <h3 id="subText4">Login to leave a post to be reviewed by other devs!</h3>
             <form onSubmit={this.handleSubmit2} className="postForm">
                 <div className="form-group shadow-textarea">
                 <label htmlFor="post"></label>
                 <input type="hidden"
                 value={this.state.sessionUser.username}/>
-                <textarea className="form-control textAreaPost z-depth-1" rows="4" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
+                <textarea className="form-control textAreaPost z-depth-1" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
                 </div>
                 {this.state.sessionUser.username
                 ? (<button type="submit" className="btn btn-primary">Post</button>)
                 : (<></>)}
             </form>
-            <h3 id="subText4">Login and click on comment button below to see and leave comments for each post</h3>
-            {this.state.posts.map((post, index) => (
+            <h3 id="subText5">Login and click on comment button below to see and leave comments for each post</h3>
+            <div className="forumBackground">
+                {this.state.posts.map((post, index) => (
                 <div className="postDiv" key={post._id}>
                     <div className="postTextDiv">
-                        <textarea className="postTextArea" defaultValue={post.post}></textarea>
+                        <textarea readOnly className="postTextArea"
+                        defaultValue={post.post}></textarea>
                     </div>
                     <h6 className="postSubText">Post By: {post.sessionUser.username}</h6>
                     <h6 className="postSubText mr-auto">Date: {post.date}</h6>
@@ -161,18 +161,20 @@ class Community extends React.Component {
                         ? (<button className="postSubText btn btn-primary">Edit</button>)
                         : (<></>)
                     }
+                    <div className="commentDiv">
+                        <div className="commentText1Div">
+                            <textarea className="commentTextArea"></textarea>
+                        </div>
+                        <h6 className="postSubText">Comment By: placeholder</h6>
+                        <h6 className="postSubText mr-auto">Date: 2:33pm 1/23/1988</h6>
+                        <button className="postSubText btn btn-primary">Delete</button>
+                        <button className="postSubText btn btn-primary">Edit</button>
+                    </div>
                 </div>
-            ))}
+                ))}
+                </div>
 
-            <div className="commentDiv">
-                <div className="commentText1Div">
-                    <textarea className="commentTextArea"></textarea>
-                </div>
-                <h6 className="postSubText">Comment By: placeholder</h6>
-                <h6 className="postSubText mr-auto">Date: 2:33pm 1/23/1988</h6>
-                <button className="postSubText btn btn-primary">Delete</button>
-                <button className="postSubText btn btn-primary">Edit</button>
-            </div>
+
             </>
         )
     }

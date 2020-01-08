@@ -4,6 +4,7 @@ class Css extends React.Component {
     render() {
         return (
             <>
+                <div className="iconSubDiv">
                 <h3 className="languageTitle">CSS Resources</h3>
                 <table className="table htmlTable table-responsive-lg">
                     <tbody>
@@ -26,6 +27,7 @@ class Css extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </>
         )
     }
