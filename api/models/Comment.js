@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Schema   = mongoose.Schema;
 
 
-// Create Schema
-
+// Create comment Schema
 const CommentSchema = new Schema({
     sessionUser: {
         username: {
@@ -20,4 +19,5 @@ const CommentSchema = new Schema({
 
 const Comment = mongoose.model('comment', CommentSchema);
 
+// export comment
 module.exports = Comment

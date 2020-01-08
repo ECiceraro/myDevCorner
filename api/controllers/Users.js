@@ -1,8 +1,8 @@
 const express = require('express');
-const bcrypt = require('bcrypt')
-const cors = require('cors');
-const router = express.Router();
-const User = require('../models/User.js')
+const bcrypt  = require('bcrypt')
+const cors    = require('cors');
+const router  = express.Router();
+const User    = require('../models/User.js');
 
 // Create/Post Route
 router.post('/', (req, res) => {

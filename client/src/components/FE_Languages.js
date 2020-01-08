@@ -1,7 +1,6 @@
-import React from 'react';
-import './FE_Languages.css';
-import Html from '../components/HTML.js'
-import Css from '../components/css.js'
+import React      from 'react';
+import Html       from '../components/HTML.js'
+import Css        from '../components/css.js'
 import JavaScript from '../components/javascript.js'
 import {
   BrowserRouter as Router,
@@ -9,6 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import './FE_Languages.css';
 
 class FeLanguages extends React.Component {
     constructor(props) {

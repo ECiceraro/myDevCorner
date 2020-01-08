@@ -1,25 +1,25 @@
-import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
-import Home from './components/Home.js';
-import Frontend from './components/Frontend.js';
-import FeLanguages from './components/FE_Languages.js'
+import React        from 'react';
+import Home         from './components/Home.js';
+import Frontend     from './components/Frontend.js';
+import FeLanguages  from './components/FE_Languages.js'
 import FeFrameworks from './components/FE_Frameworks.js'
-import Backend from './components/Backend.js';
-import BeLanguages from './components/BE_Languages.js'
+import Backend      from './components/Backend.js';
+import BeLanguages  from './components/BE_Languages.js'
 import BeFrameworks from './components/BE_Frameworks.js'
-import Databases from './components/Databases.js';
-import Hosting from './components/Hosting.js';
-import Community from './components/Community.js';
-import Login from './components/Login.js';
-import Signup from './components/Signup.js';
-import axios from 'axios';
+import Databases    from './components/Databases.js';
+import Hosting      from './components/Hosting.js';
+import Community    from './components/Community.js';
+import Login        from './components/Login.js';
+import Signup       from './components/Signup.js';
+import axios        from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css';
 
 let baseUrl = '';
 
@@ -59,7 +59,6 @@ class App extends React.Component{
                 this.setState({
                     sessionUser: foundUser.data
                 })
-            // console.log(this.state);
             }
         })
     }
@@ -89,7 +88,6 @@ class App extends React.Component{
                 messageA: loggedInUser.data.messageA,
                 messageB: loggedInUser.data.messageB
             })
-            // console.log(this.state);
         }).catch(err => {
             console.log(err)
         })
@@ -117,7 +115,6 @@ class App extends React.Component{
     componentDidMount = () => {
         window.scrollTo(0, 0)
         this.checkSession()
-
     }
     render() {
         return (
@@ -126,21 +123,21 @@ class App extends React.Component{
                     <nav className="navbar sticky-top navbar-expand-lg nav-pills nav1">
                         <Link className="btn btn-primary" id="homeLink" to="/">My<br/> Dev <br/> Corner</Link>
                         <div className="dropdown">
-                        <button type="button" className="dropdown-toggle nav-item btn btn-primary" data-toggle="dropdown" data-hover="dropdown">Front-End</button>
-                            <div className="dropdown-menu">
-                                <Link to="/frontend" className="dropdown-item onHover">Overview</Link>
-                                <Link to="/fe_languages" className="dropdown-item onHover">Languages</Link>
-                                <Link to="/fe_frameworks" className="dropdown-item onHover">Frameworks</Link>
-                            </div>
+                            <button type="button" className="dropdown-toggle nav-item btn btn-primary" data-toggle="dropdown" data-hover="dropdown">Front-End</button>
+                                <div className="dropdown-menu">
+                                    <Link to="/frontend" className="dropdown-item onHover">Overview</Link>
+                                    <Link to="/fe_languages" className="dropdown-item onHover">Languages</Link>
+                                    <Link to="/fe_frameworks" className="dropdown-item onHover">Frameworks</Link>
+                                </div>
                         </div>
                         <div className="dropdown">
                             <button type="button" className="dropdown-toggle nav-item btn btn-primary" data-toggle="dropdown">Back-End</button>
-                            <div className="dropdown-menu">
-                                <Link to="/backend" className="dropdown-item onHover">Overview</Link>
-                                <Link to="/be_languages" className="dropdown-item onHover">Languages</Link>
-                                <Link to="/be_frameworks" className="dropdown-item onHover">Frameworks</Link>
-                                <Link to="/databases" className="dropdown-item onHover">Databases</Link>
-                            </div>
+                                <div className="dropdown-menu">
+                                    <Link to="/backend" className="dropdown-item onHover">Overview</Link>
+                                    <Link to="/be_languages" className="dropdown-item onHover">Languages</Link>
+                                    <Link to="/be_frameworks" className="dropdown-item onHover">Frameworks</Link>
+                                    <Link to="/databases" className="dropdown-item onHover">Databases</Link>
+                                </div>
                         </div>
                         <Link className="nav-item btn btn-primary" to="/hosting">Hosting</Link>
                         <Link className='mr-auto nav-item btn btn-primary' to="/community">Forum</Link>
@@ -156,7 +153,7 @@ class App extends React.Component{
                             {this.state.sessionUser.username ? (
                                 <button type="submit" className="nav-item2 btn btn-primary">Logout</button>
                             ) : (<></>)}
-                            </form>
+                        </form>
                     </nav>
                     <Switch>
                         <Route exact path="/">
@@ -205,8 +202,8 @@ class App extends React.Component{
                         </Route>
                     </Switch>
                     <footer>
-                            <a className="footerLink" href="https://linkedin.com/in/erikciceraro" target="_blank" rel="noopener noreferrer"><img className="icon" alt="linkedin" src="/images/linkedin.png"/></a>
-                            <a className="footerLink" href="https://github.com/ECiceraro" target="_blank" rel="noopener noreferrer"><img className="icon" alt="github icon" src="/images/github.png"/></a>
+                        <a className="footerLink" href="https://linkedin.com/in/erikciceraro" target="_blank" rel="noopener noreferrer"><img className="icon" alt="linkedin" src="/images/linkedin.png"/></a>
+                        <a className="footerLink" href="https://github.com/ECiceraro" target="_blank" rel="noopener noreferrer"><img className="icon" alt="github icon" src="/images/github.png"/></a>
                         <p className="footerText" >Application Developed By Erik Ciceraro</p>
                     </footer>
                 </>

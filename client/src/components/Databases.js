@@ -1,5 +1,5 @@
-import React from 'react';
-import Mongodb from '../components/Mongodb.js';
+import React      from 'react';
+import Mongodb    from '../components/Mongodb.js';
 import Postgresql from '../components/Postgresql.js';
 import {
   BrowserRouter as Router,

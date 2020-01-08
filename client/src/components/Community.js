@@ -1,7 +1,7 @@
-import React from 'react';
-import './Community.css';
-import axios from 'axios';
+import React  from 'react';
+import axios  from 'axios';
 import moment from 'moment';
+import './Community.css';
 
 let baseUrl = '';
 
@@ -39,7 +39,6 @@ class Community extends React.Component {
                     sessionUser: foundUser.data
                 })
             }
-        // console.log(this.state);
         })
     }
     // load posts
@@ -119,7 +118,6 @@ class Community extends React.Component {
     }
     // create comment
     createComment = (commentData) => {
-        // console.log(commentData);
         axios({
             method: 'PATCH',
             url: `${baseUrl}/comments/${commentData.postId}`,
@@ -152,36 +150,37 @@ class Community extends React.Component {
     render() {
         return (
             <>
-            <div className="heroDiv2">
-                <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
-                <h1 className="heroTitle2">Development Forum</h1>
-            </div>
-            <h3 id="subText4">Login to leave a post to be reviewed by other devs!</h3>
-            <form onSubmit={this.handleSubmit2} className="postForm">
-                <div className="form-group shadow-textarea">
-                <label htmlFor="post"></label>
-                <textarea className="form-control textAreaPost z-depth-1" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
+                <div className="heroDiv2">
+                    <img className="heroImg2" src="/images/frontendHero.png" alt="laptop signifying front end development" />
+                    <h1 className="heroTitle2">Development Forum</h1>
                 </div>
-                {this.state.sessionUser.username
-                ? (<button type="submit" className="btn btn-primary">Post</button>)
-                : (<></>)}
-            </form>
-            <h3 id="subText5">Login and click on comment button below to see and leave comments for each post</h3>
-            <div className="forumBackground">
-                {this.state.posts.map((post, index) => (
-                <div className="postDiv" key={post._id}>
-                    <div className="postTextDiv">
-                        <textarea readOnly className="postTextArea"
-                        defaultValue={post.post}></textarea>
+                <h3 id="subText4">Login to leave a post to be reviewed by other devs!</h3>
+                <form onSubmit={this.handleSubmit2} className="postForm">
+                    <div className="form-group shadow-textarea">
+                    <label htmlFor="post"></label>
+                    <textarea className="form-control textAreaPost z-depth-1" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
                     </div>
-                    <h6 className="postSubText">Post By: {post.sessionUser.username}</h6>
-                    <h6 className="postSubText mr-auto">Posted {moment(post.date).fromNow()}</h6>
                     {this.state.sessionUser.username
-                        ? (<button className="postSubText btn btn-primary"
-                        onClick={() => {this.setPostId(post._id)}}
-                        >Comment</button>)
+                        ? (<button type="submit" className="btn btn-primary">Post</button>)
                         : (<></>)
                     }
+                </form>
+                <h3 id="subText5">Login and click on comment button below to see and leave comments for each post</h3>
+                <div className="forumBackground">
+                    {this.state.posts.map((post, index) => (
+                        <div className="postDiv" key={post._id}>
+                            <div className="postTextDiv">
+                                <textarea readOnly className="postTextArea"
+                                defaultValue={post.post}></textarea>
+                            </div>
+                            <h6 className="postSubText">Post By: {post.sessionUser.username}</h6>
+                            <h6 className="postSubText mr-auto">Posted {moment(post.date).fromNow()}</h6>
+                            {this.state.sessionUser.username
+                                ? (<button className="postSubText btn btn-primary"
+                                onClick={() => {this.setPostId(post._id)}}
+                                >Comment</button>)
+                                : (<></>)
+                            }
                     {this.state.sessionUser.username === post.sessionUser.username
                         ? (<button className="postSubText btn btn-primary"
                         onClick={() => {this.deletePost(post._id)}}
@@ -208,23 +207,21 @@ class Community extends React.Component {
                     ))}
 
                     {this.state.postId === post._id
-                    ?   (<form  onSubmit={this.handleSubmit3}                   className="postForm">
-                        <div className="form-group shadow-textarea">
-                        <label htmlFor="post"></label>
-                        <textarea className="form-control textAreaPost z-depth-1" rows="7" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
-                        </div>
+                        ? (
+                            <form onSubmit={this.handleSubmit3}                       className="postForm">
+                                <div className="form-group shadow-textarea">
+                                    <label htmlFor="post"></label>
+                                    <textarea className="form-control textAreaPost z-depth-1" rows="7" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
+                                </div>
                         {this.state.sessionUser.username
-                        ? (<button type="submit" className="btn btn-primary">Comment</button>)
-                        : (<></>)}
-                        </form>)
-                        : (<></>)
+                            ? (<button type="submit" className="btn btn-primary">Comment</button>)
+                            : (<></>)}
+                            </form>)
+                            : (<></>)
                     }
-
+                    </div>
+                    ))}
                 </div>
-                ))}
-                </div>
-
-
             </>
         )
     }

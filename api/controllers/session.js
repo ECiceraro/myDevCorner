@@ -1,8 +1,8 @@
 const express = require('express')
-const bcrypt = require('bcrypt')
-const router = express.Router()
-const session  = require('express-session');
-const User = require('../models/User.js')
+const bcrypt  = require('bcrypt')
+const router  = express.Router()
+const session = require('express-session');
+const User    = require('../models/User.js')
 
 router.post('/', (req, res) => {
     User.findOne({username: req.body.username},  (error, foundUser) => {

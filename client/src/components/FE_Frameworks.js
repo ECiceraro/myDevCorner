@@ -1,9 +1,8 @@
-import React from 'react';
-import './FE_Frameworks.css';
-import Nodejs from '../components/Nodejs.js';
-import Jquery from '../components/Jquery.js';
+import React     from 'react';
+import Nodejs    from '../components/Nodejs.js';
+import Jquery    from '../components/Jquery.js';
 import Angularjs from '../components/Angularjs.js';
-import Reactjs from '../components/React.js';
+import Reactjs   from '../components/React.js';
 import Bootstrap from '../components/Bootstrap.js';
 import {
   BrowserRouter as Router,
@@ -11,6 +10,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import './FE_Frameworks.css';
 
 class FeFrameworks extends React.Component {
     constructor(props) {

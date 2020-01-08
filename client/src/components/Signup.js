@@ -1,6 +1,6 @@
-import React from 'react';
+import React        from 'react';
+import { Redirect } from "react-router-dom";
 import './Signup.css';
-import { Redirect } from "react-router-dom"
 
 class Signup extends React.Component {
     constructor(props) {
@@ -16,9 +16,6 @@ class Signup extends React.Component {
         // auto scroll to top
         window.scrollTo(0, 0)
     }
-    // componentWillUnmount() {
-    //
-    // }
     // ==============
     // HANDLERS
     // ==============
@@ -47,18 +44,18 @@ class Signup extends React.Component {
                     <h1 className="heroTitle2">Create Account</h1>
                 </div>
                 <div className="iconDiv2">
-                <form onSubmit={this.handleSubmit} className="signupForm">
-                    <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input type="text" className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" value={this.state.username} onChange={this.handleChange}/>
-                    <small id="usernameHelp" className="helpText">{this.props.messageC}</small>
-                    </div>
-                    <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="password" placeholder="Enter Password" onChange={this.handleChange} value={this.state.password}/>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                    <form onSubmit={this.handleSubmit} className="signupForm">
+                        <div className="form-group">
+                            <label htmlFor="username">Username</label>
+                            <input type="text" className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" value={this.state.username} onChange={this.handleChange}/>
+                            <small id="usernameHelp" className="helpText">{this.props.messageC}</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" className="form-control" id="password" placeholder="Enter Password" onChange={this.handleChange} value={this.state.password}/>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </>
         )

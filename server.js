@@ -1,16 +1,15 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const session  = require('express-session');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const postsController = require('./api/controllers/Posts.js');
-const usersController = require('./api/controllers/Users.js');
-const sessionController = require('./api/controllers/session.js');
+const express            = require('express');
+const mongoose           = require('mongoose');
+const session            = require('express-session');
+const bodyParser         = require('body-parser');
+const bcrypt             = require('bcrypt');
+const cors               = require('cors');
+const path               = require('path');
+const postsController    = require('./api/controllers/Posts.js');
+const usersController    = require('./api/controllers/Users.js');
+const sessionController  = require('./api/controllers/session.js');
 const commentsController = require('./api/controllers/Comments.js');
-const cors = require('cors');
-const path = require('path');
-
-const app = express();
+const app                = express();
 
 // Allows us to use the env file to keep sensitive information secure
 require('dotenv').config();
@@ -31,6 +30,7 @@ app.use(session({
 // DB config
 const db = process.env.MONGODB_URI;
 console.log(db);
+
 // Connect to Mongo
 mongoose
     .connect(db, { useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false, useCreateIndex: true })
@@ -50,7 +50,7 @@ app.use('/comments', commentsController)
 if(process.env.NODE_ENV === 'production') {
     // set static folder
     app.use(express.static('client/build'));
-
+    // allows requests to go through once in production enviroment
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
@@ -62,5 +62,5 @@ if(process.env.NODE_ENV === 'production') {
 
 // Port config
 const PORT = process.env.PORT;
-
+    // Port Listener
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

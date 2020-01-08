@@ -1,7 +1,7 @@
 const express = require('express');
-const router = express.Router();
-const moment = require('moment')
-const cors = require('cors');
+const router  = express.Router();
+const moment  = require('moment')
+const cors    = require('cors');
 
 // Post Model
 const Post = require('../models/Post.js')

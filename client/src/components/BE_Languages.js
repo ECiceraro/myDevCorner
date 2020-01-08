@@ -1,12 +1,12 @@
 import React from 'react';
-import './BE_Languages.css';
-import Php from '../components/php.js'
+import Php   from '../components/php.js'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import './BE_Languages.css';
 
 class BeLanguages extends React.Component {
     constructor(props) {
