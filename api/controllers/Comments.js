@@ -6,14 +6,13 @@ const moment = require('moment')
 // Post Model
 const Post = require('../models/Post.js')
 
-// Create saved drinks route
-// router.patch('/', (req, res) => {
-//     Post.findByIdAndUpdate(req.session.user._id,{$push: {savedDrinks:req.body}}, {new:true}, (err, foundUser) => {
-//         req.session.user = foundUser;
-//         res.json(foundUser)
-//     })
-// })
-//
+// Create comment route
+router.patch('/:id', (req, res) => {
+    Post.findByIdAndUpdate(req.params.id,{$push: {comments:req.body}}, {new:true}, (err, foundPost) => {
+        res.json(foundPost)
+    })
+})
+
 // // Index of saved drinks route
 // router.get('/', (req, res) => {
 //     User.findById(req.session.user._id, (error, foundUser) => {

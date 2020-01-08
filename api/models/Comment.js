@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
-const Comment = require('../models/Comment.js')
 const Schema = mongoose.Schema;
 
 
 // Create Schema
 
-const PostSchema = new Schema({
+const CommentSchema = new Schema({
     sessionUser: {
         username: {
-            type: String,
+            type:String,
             required: true
         }
     },
@@ -16,10 +15,9 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    post: String,
-    comments: [Comment.schema]
+    comment: String,
 });
 
-const Post = mongoose.model('post', PostSchema);
+const Comment = mongoose.model('comment', CommentSchema);
 
-module.exports = Post
+module.exports = Comment

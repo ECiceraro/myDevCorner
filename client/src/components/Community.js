@@ -1,6 +1,7 @@
 import React from 'react';
 import './Community.css';
 import axios from 'axios';
+import moment from 'moment';
 
 let baseUrl = '';
 
@@ -14,6 +15,8 @@ class Community extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            postId: '',
+            comment: '',
             post: '',
             sessionUser: {
                 username: ''
@@ -49,11 +52,9 @@ class Community extends React.Component {
                 'Content-Type': 'application/json'
             }
         }).then( foundPosts => {
-            console.log(foundPosts);
             this.setState({
                 posts: foundPosts.data
             })
-            console.log(this.state);
         })
     }
 
@@ -73,7 +74,7 @@ class Community extends React.Component {
     handleChange = (e) => {
       this.setState({[e.target.id] : e.target.value})
     }
-    // handles submit
+    // handles submit for posts
     handleSubmit2 = (e) => {
       e.preventDefault();
       this.createPost(this.state);
@@ -112,12 +113,42 @@ class Community extends React.Component {
             this.setState({
                 posts: [createdPost.data, ...this.state.posts]
             })
-            console.log(this.state);
         }).catch(error => {
             console.log(error)
         })
     }
-
+    // create comment
+    createComment = (commentData) => {
+        // console.log(commentData);
+        axios({
+            method: 'PATCH',
+            url: `${baseUrl}/comments/${commentData.postId}`,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            data: commentData
+        })
+        .then( createdPost => {
+            this.loadPosts();
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+    // handles submit for comments
+    handleSubmit3 = (e) => {
+      e.preventDefault();
+      this.createComment(this.state);
+      this.setState({
+          comment: ''
+      })
+    }
+    // sets post id for comment form
+    setPostId = (postId) => {
+        this.setState({
+            postId: postId,
+        })
+    }
     render() {
         return (
             <>
@@ -129,8 +160,6 @@ class Community extends React.Component {
             <form onSubmit={this.handleSubmit2} className="postForm">
                 <div className="form-group shadow-textarea">
                 <label htmlFor="post"></label>
-                <input type="hidden"
-                value={this.state.sessionUser.username}/>
                 <textarea className="form-control textAreaPost z-depth-1" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
                 </div>
                 {this.state.sessionUser.username
@@ -146,10 +175,12 @@ class Community extends React.Component {
                         defaultValue={post.post}></textarea>
                     </div>
                     <h6 className="postSubText">Post By: {post.sessionUser.username}</h6>
-                    <h6 className="postSubText mr-auto">Date: {post.date}</h6>
-                    {this.state.sessionUser.username
-                        ? (<button className="postSubText btn btn-primary">Comment</button>)
-                        : <></>
+                    <h6 className="postSubText mr-auto">Posted {moment(post.date).fromNow()}</h6>
+                    {this.state.sessionUser.username === post.sessionUser.username
+                        ? (<button className="postSubText btn btn-primary"
+                        onClick={() => {this.setPostId(post._id)}}
+                        >Comment</button>)
+                        : (<></>)
                     }
                     {this.state.sessionUser.username === post.sessionUser.username
                         ? (<button className="postSubText btn btn-primary"
@@ -161,15 +192,34 @@ class Community extends React.Component {
                         ? (<button className="postSubText btn btn-primary">Edit</button>)
                         : (<></>)
                     }
-                    <div className="commentDiv">
-                        <div className="commentText1Div">
-                            <textarea className="commentTextArea"></textarea>
+                    {post.comments.map((comment, index) => (
+                        <div className="commentDiv" key={comment._id}>
+                            <div className="commentText1Div">
+                                <textarea
+                                defaultValue={comment.comment}
+                                className="commentTextArea"
+                                ></textarea>
+                            </div>
+                            <h6 className="postSubText">Comment By: {comment.sessionUser.username}</h6>
+                            <h6 className="postSubText mr-auto">Posted {moment(comment.date).fromNow()}</h6>
+                            <button className="postSubText btn btn-primary">Delete</button>
+                            <button className="postSubText btn btn-primary">Edit</button>
                         </div>
-                        <h6 className="postSubText">Comment By: placeholder</h6>
-                        <h6 className="postSubText mr-auto">Date: 2:33pm 1/23/1988</h6>
-                        <button className="postSubText btn btn-primary">Delete</button>
-                        <button className="postSubText btn btn-primary">Edit</button>
-                    </div>
+                    ))}
+
+                    {this.state.postId === post._id
+                    ?   (<form  onSubmit={this.handleSubmit3}                   className="postForm">
+                        <div className="form-group shadow-textarea">
+                        <label htmlFor="post"></label>
+                        <textarea className="form-control textAreaPost z-depth-1" rows="7" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
+                        </div>
+                        {this.state.sessionUser.username
+                        ? (<button type="submit" className="btn btn-primary">Comment</button>)
+                        : (<></>)}
+                        </form>)
+                        : (<></>)
+                    }
+
                 </div>
                 ))}
                 </div>

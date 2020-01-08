@@ -11,7 +11,9 @@ const Post = require('../models/Post.js')
 router.get('/', (req, res) => {
     Post.find()
         .sort({ date: -1})
-        .then(posts => res.json(posts));
+        .then(posts => {
+            res.json(posts)
+        });
 });
 
 // Create Route POST Request
