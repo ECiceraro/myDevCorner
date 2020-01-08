@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment')
+const cors = require('cors');
 
 // Post Model
 const Post = require('../models/Post.js')
@@ -17,7 +18,10 @@ router.get('/', (req, res) => {
 // Creates new Post in DB
 router.post('/', (req, res) => {
     Post.create(req.body)
-    .then(post => res.json(post));
+    .then(post => {
+        res.json(post)
+    });
+
 });
 
 

@@ -9,8 +9,7 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            toHome: false,
-            testRefresh: false
+            toHome: false
         }
     }
 

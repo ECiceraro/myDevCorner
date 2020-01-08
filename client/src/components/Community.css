@@ -1,37 +1,88 @@
 .postDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0 auto;
     margin-top: 5em;
-    width: 40em;
+    width: 50em;
     height: 20em;
     border-radius: 10px;
-    border: 1px solid red;
+    background-color: #007bff;
+    color: white;
 }
 
 .commentDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0 auto;
     margin-top: .5em;
-    width: 30em;
-    height: 10em;
+    width: 40em;
+    height: 14em;
     border-radius: 10px;
-    border: 1px solid red;
+    color: white;
+    background-color: #007bff;
 }
 
 .postTextDiv {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-start;
     margin: 0 auto;
-    width: 40em;
-    height: 15em;
-    border-radius: 10px;
-    border: 1px solid blue;
+    width: 50em;
+    height: 16em;
+    border-radius: 10px 10px 0 0;
+    background-color: #1d399d;
 }
 
-.commentTextDiv {
+.commentText1Div {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-start;
     margin: 0 auto;
-    width: 30em;
-    height: 6em;
-    border-radius: 10px;
-    border: 1px solid blue;
+    width: 40em;
+    height: 10em;
+    border-radius: 10px 10px 0 0;
+    background-color: #1d399d;
 }
 
 .postForm {
+    width: 40em;
+    height: 10em;
+    margin: 2em auto;
+    background-color: #1d399d;
+    border-radius: 10px;
+}
 
+.textAreaPost {
+    width: 38em;
+    box-shadow: 0px 8px 16px rgba(82,97,115,0.16);
+    margin: 0 auto;
+    resize: none;
+    overflow-y: scroll;
+}
+
+.postSubText {
+    margin: 0 1em;
+    margin-bottom: .5em;
+}
+
+.postTextArea {
+    overflow-y: scroll;
+    height: 14.5em;
+    resize: none;
+    margin: 0 auto;
+    width: 47em;
+    padding: 2em;
+}
+
+.commentTextArea {
+    overflow-y: scroll;
+    margin: 0 auto;
+    resize: none;
+    height: 9em;
+    width: 37em;
+    padding: 1.5em;
 }

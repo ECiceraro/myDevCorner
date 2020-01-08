@@ -30,7 +30,7 @@ class Signup extends React.Component {
     handleSubmit = (e) => {
       e.preventDefault();
       this.props.handleCreate(this.state);
-      if(this.props.messageC){
+      if(!this.props.messageC){
           this.setState({
               toHome: true
           });

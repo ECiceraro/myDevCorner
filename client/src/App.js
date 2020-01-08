@@ -59,6 +59,7 @@ class App extends React.Component{
                 this.setState({
                     sessionUser: foundUser.data
                 })
+            // console.log(this.state);
             }
         })
     }
@@ -186,7 +187,8 @@ class App extends React.Component{
                             <Hosting/>
                         </Route>
                         <Route path="/community">
-                            <Community/>
+                            <Community
+                            sessionUser={this.state.sessionUser}/>
                         </Route>
                         <Route path="/signup">
                             <Signup
