@@ -158,7 +158,7 @@ class Community extends React.Component {
                 <form onSubmit={this.handleSubmit2} className="postForm">
                     <div className="form-group shadow-textarea">
                     <label htmlFor="post"></label>
-                    <textarea className="form-control textAreaPost z-depth-1" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
+                    <textarea className="form-control textAreaPost z-depth-1" cols="77" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
                     </div>
                     {this.state.sessionUser.username
                         ? (<button type="submit" className="btn btn-primary">Post</button>)
