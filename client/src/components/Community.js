@@ -17,6 +17,7 @@ class Community extends React.Component {
         this.state = {
             postId: '',
             editPostId: '',
+            commentId: '',
             comment: '',
             post: '',
             sessionUser: {
@@ -184,6 +185,22 @@ class Community extends React.Component {
         editPostId: ''
       });
     }
+    // delete comment
+    deleteComment = (postId, commentId) => {
+        axios({
+            method: 'DELETE',
+            url: `${baseUrl}/comments/${postId}/${commentId}`,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then( deletedComment => {
+            this.loadPosts();
+        }).catch(error => {
+            console.log(error)
+        })
+    }
     render() {
         return (
             <>
@@ -254,8 +271,16 @@ class Community extends React.Component {
                             </div>
                             <h6 className="postSubText">Comment By: {comment.sessionUser.username}</h6>
                             <h6 className="postSubText mr-auto">Posted {moment(comment.date).fromNow()}</h6>
-                            <button className="postSubText btn btn-primary">Delete</button>
-                            <button className="postSubText btn btn-primary">Edit</button>
+                            {this.state.sessionUser.username === comment.sessionUser.username
+                              ? (<button
+                                onClick={() => {this.deleteComment(post._id, comment._id)}}
+                                className="postSubText btn btn-primary">Delete</button>)
+                              : (<></>)
+                            }
+                            {this.state.sessionUser.username === comment.sessionUser.username
+                              ? (<button className="postSubText btn btn-primary">Edit</button>)
+                              : (<></>)
+                            }
                         </div>
                     ))}
 

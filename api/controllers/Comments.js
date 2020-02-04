@@ -14,9 +14,9 @@ router.patch('/:id', (req, res) => {
 })
 
  // Delete Route for comments
-router.delete('/:id', (req,res) => {
-    Post.findByIdAndUpdate(req.params.id, {$pull: {comments: {_id: req.params.id}}}, {new:true}, (error, foundUser) => {
-        res.json(foundUser)
+router.delete('/:id1/:id2', (req,res) => {
+    Post.findByIdAndUpdate(req.params.id1, {$pull: {comments: {_id: req.params.id2}}}, {new:true}, (error, deletedComment) => {
+        res.json(deletedComment)
     });
 })
 
