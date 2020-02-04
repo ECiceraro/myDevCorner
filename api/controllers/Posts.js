@@ -23,7 +23,6 @@ router.post('/', (req, res) => {
     .then(post => {
         res.json(post)
     });
-
 });
 
 
@@ -33,6 +32,14 @@ router.delete('/:id', (req, res) => {
     Post.findByIdAndRemove(req.params.id)
     .then(deletedPost => res.json(deletedPost))
     .catch(err => res.status(404).json(err));
+})
+
+// Edit Post Route
+// allows edits to post
+router.patch('/:id', (req, res) => {
+  Post.findByIdAndUpdate(req.params.id, {$set: {post: req.body.post}}, {new: true})
+  .then(updatedPost => res.json(updatedPost))
+  .catch(err => res.status(404).json(err));
 })
 
 

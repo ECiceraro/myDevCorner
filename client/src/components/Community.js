@@ -16,6 +16,7 @@ class Community extends React.Component {
         super(props)
         this.state = {
             postId: '',
+            editPostId: '',
             comment: '',
             post: '',
             sessionUser: {
@@ -138,14 +139,50 @@ class Community extends React.Component {
       e.preventDefault();
       this.createComment(this.state);
       this.setState({
-          comment: ''
+          comment: '',
+          postId: ''
       })
     }
     // sets post id for comment form
     setPostId = (postId) => {
         this.setState({
             postId: postId,
+            editPostId: ''
         })
+    }
+    // sets post id for editing post
+    setEditPostId = (editPostId) => {
+      this.setState({
+        editPostId: editPostId,
+        postId: ''
+      })
+    }
+    // edit post function
+    editPost = (postData) => {
+      axios({
+        method: 'PATCH',
+        url: `${baseUrl}/posts/${postData.editPostId}`,
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        data: postData
+      })
+      .then(editedPost => {
+        this.loadPosts();
+        window.location.reload(false);
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    // handles submit for editing posts
+    handleSubmit4 = (e) => {
+      e.preventDefault();
+      this.editPost(this.state);
+      this.setState({
+        post: '',
+        editPostId: ''
+      });
     }
     render() {
         return (
@@ -165,7 +202,7 @@ class Community extends React.Component {
                         : (<></>)
                     }
                 </form>
-                <h3 id="subText5">Login and click on comment button below to see and leave comments for each post</h3>
+                <h3 id="subText5">Login and click on comment button below to leave comments for each post</h3>
                 <div className="forumBackground">
                     {this.state.posts.map((post, index) => (
                         <div className="postDiv" key={post._id}>
@@ -182,14 +219,30 @@ class Community extends React.Component {
                                 : (<></>)
                             }
                     {this.state.sessionUser.username === post.sessionUser.username
+                        ? (<button
+                            onClick={() => {this.setEditPostId(post._id)}}
+                            className="postSubText btn btn-primary">Edit</button>)
+                        : (<></>)
+                    }
+                    {this.state.sessionUser.username === post.sessionUser.username
                         ? (<button className="postSubText btn btn-primary"
                         onClick={() => {this.deletePost(post._id)}}
                         >Delete</button>)
                         : (<></>)
                     }
-                    {this.state.sessionUser.username === post.sessionUser.username
-                        ? (<button className="postSubText btn btn-primary">Edit</button>)
-                        : (<></>)
+                    {this.state.editPostId === post._id
+                      ? (
+                        <form
+                        onSubmit={this.handleSubmit4}
+                        className="postForm">
+                          <div className="form-group shadow-textarea">
+                            <label htmlFor="edit post"></label>
+                            <textarea className="form-control textAreaPost z-depth-1" cols="76" rows="7" id="post" placeholder={post.post} type="textarea" value={this.state.post} onChange={this.handleChange}/>
+                          </div>
+                          <button type="submit" className="btn btn-primary">Edit Post</button>
+                        </form>
+                        )
+                      : (<></>)
                     }
                     {post.comments.map((comment, index) => (
                         <div className="commentDiv" key={comment._id}>
@@ -208,14 +261,12 @@ class Community extends React.Component {
 
                     {this.state.postId === post._id
                         ? (
-                            <form onSubmit={this.handleSubmit3}                       className="postForm">
+                            <form onSubmit={this.handleSubmit3}       className="postForm">
                                 <div className="form-group shadow-textarea">
                                     <label htmlFor="post"></label>
-                                    <textarea className="form-control textAreaPost z-depth-1" rows="7" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
+                                    <textarea className="form-control textAreaPost z-depth-1" cols="76" rows="7" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
                                 </div>
-                        {this.state.sessionUser.username
-                            ? (<button type="submit" className="btn btn-primary">Comment</button>)
-                            : (<></>)}
+                                <button type="submit" className="btn btn-primary">Comment</button>
                             </form>)
                             : (<></>)
                     }
