@@ -17,7 +17,8 @@ class Community extends React.Component {
         this.state = {
             postId: '',
             editPostId: '',
-            commentId: '',
+            editCommentId: '',
+            editCommentPostId: '',
             comment: '',
             post: '',
             sessionUser: {
@@ -141,21 +142,24 @@ class Community extends React.Component {
       this.createComment(this.state);
       this.setState({
           comment: '',
-          postId: ''
+          postId: '',
+          editCommentId: ''
       })
     }
     // sets post id for comment form
     setPostId = (postId) => {
         this.setState({
             postId: postId,
-            editPostId: ''
+            editPostId: '',
+            editCommentId: ''
         })
     }
-    // sets post id for editing post
+    // sets post id for edit post form
     setEditPostId = (editPostId) => {
       this.setState({
         editPostId: editPostId,
-        postId: ''
+        postId: '',
+        editCommentId: ''
       })
     }
     // edit post function
@@ -185,6 +189,15 @@ class Community extends React.Component {
         editPostId: ''
       });
     }
+    // sets comment id for edit comment form
+    setEditCommentId = (postId, editCommentId) => {
+      this.setState({
+        editCommentId: editCommentId,
+        editCommentPostId: postId,
+        editPostId: '',
+        postId: ''
+      })
+    }
     // delete comment
     deleteComment = (postId, commentId) => {
         axios({
@@ -210,12 +223,12 @@ class Community extends React.Component {
                 </div>
                 <h3 id="subText4">Login to leave a post to be reviewed by other devs!</h3>
                 <form onSubmit={this.handleSubmit2} className="postForm">
-                    <div className="form-group shadow-textarea">
+                    <div className="textareaDiv1 shadow-textarea">
                     <label htmlFor="post"></label>
-                    <textarea className="form-control textAreaPost z-depth-1" cols="77" rows="7" id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
+                    <textarea className="textAreaPost " id="post" placeholder="Post in here" type="textarea" value={this.state.post} onChange={this.handleChange}/>
                     </div>
                     {this.state.sessionUser.username
-                        ? (<button type="submit" className="btn btn-primary">Post</button>)
+                        ? (<button type="submit" className="postbtn btn btn-primary">Post</button>)
                         : (<></>)
                     }
                 </form>
@@ -251,16 +264,17 @@ class Community extends React.Component {
                       ? (
                         <form
                         onSubmit={this.handleSubmit4}
-                        className="postForm">
-                          <div className="form-group shadow-textarea">
+                        className="postForm2">
+                          <div className="textareaDiv2 shadow-textarea">
                             <label htmlFor="edit post"></label>
-                            <textarea className="form-control textAreaPost z-depth-1" cols="76" rows="7" id="post" placeholder={post.post} type="textarea" value={this.state.post} onChange={this.handleChange}/>
+                            <textarea className="textAreaPost z-depth-1" id="post" placeholder={post.post} type="textarea" value={this.state.post} onChange={this.handleChange}/>
                           </div>
                           <button type="submit" className="btn btn-primary">Edit Post</button>
                         </form>
                         )
                       : (<></>)
                     }
+
                     {post.comments.map((comment, index) => (
                         <div className="commentDiv" key={comment._id}>
                             <div className="commentText1Div">
@@ -269,27 +283,46 @@ class Community extends React.Component {
                                 className="commentTextArea"
                                 ></textarea>
                             </div>
-                            <h6 className="postSubText">Comment By: {comment.sessionUser.username}</h6>
-                            <h6 className="postSubText mr-auto">Posted {moment(comment.date).fromNow()}</h6>
+                            <h6 className="commentSubText">Comment By: {comment.sessionUser.username}</h6>
+                            <h6 className="commentSubText mr-auto">Posted {moment(comment.date).fromNow()}</h6>
                             {this.state.sessionUser.username === comment.sessionUser.username
                               ? (<button
                                 onClick={() => {this.deleteComment(post._id, comment._id)}}
-                                className="postSubText btn btn-primary">Delete</button>)
+                                className="commentSubText btn btn-primary">Delete</button>)
                               : (<></>)
                             }
                             {this.state.sessionUser.username === comment.sessionUser.username
-                              ? (<button className="postSubText btn btn-primary">Edit</button>)
+                              ? (<button
+                                onClick={() => {this.setEditCommentId(post._id, comment._id)}}
+                                className="commentSubText btn btn-primary">Edit</button>)
                               : (<></>)
+                            }
+                            {this.state.editCommentId === comment._id
+                              ? (<form
+                                className="postForm3"
+                                onSubmit={this.handleSubmit5}>
+                                  <div className="commentText2Div shadow-textarea">
+                                  <textarea
+                                    type="textarea z-depth-1"
+                                    placeholder={comment.comment}
+                                    className="commentTextArea2"
+                                  ></textarea>
+                                </div>
+                                <button
+                                type="submit" className="editCommentBtn btn btn-primary">Edit Comment</button>
+                                </form>)
+                              : (<></>)
+
                             }
                         </div>
                     ))}
 
                     {this.state.postId === post._id
                         ? (
-                            <form onSubmit={this.handleSubmit3}       className="postForm">
-                                <div className="form-group shadow-textarea">
+                            <form onSubmit={this.handleSubmit3}       className="postForm2">
+                                <div className="textareaDiv2 shadow-textarea">
                                     <label htmlFor="post"></label>
-                                    <textarea className="form-control textAreaPost z-depth-1" cols="76" rows="7" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
+                                    <textarea className="textAreaPost z-depth-1" id="comment" placeholder="Comment in here" type="textarea" value={this.state.comment} onChange={this.handleChange}/>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Comment</button>
                             </form>)
